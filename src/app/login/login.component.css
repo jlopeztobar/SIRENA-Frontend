@@ -1,0 +1,50 @@
+/* Estilos para el contenedor de la imagen */
+.img-container {
+    display: flex;
+    justify-content: center;
+    background: #B03232; /* Fondo rojo */
+    padding: 20px; /* Espaciado alrededor de la imagen */
+    border-radius: 1rem 0 0 1rem; /* Redondea solo los bordes izquierdos */
+  }
+  
+  .img-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+/* Estilos para el contenedor principal del formulario */
+.d-flex.align-items-center {
+    flex-direction: column; /* Cambiar la dirección de flex a columna para centrar verticalmente */
+    text-align: center; /* Centrar horizontalmente el texto */
+    height: 100%; /* Asegurarse de que el contenedor ocupe la altura completa */
+  }
+  
+  /* Estilos adicionales para el ícono de cubos */
+  i.fas.fa-cubes {
+    font-size: 2rem;
+    color: #ff6219; /* Color naranja */
+  }
+  
+/* Cambia el color de la palabra "sirena" */
+.sirena-text {
+    color: #B03232; /* Cambia el color del texto a rojo */
+  }
+
+/* Estilos para el texto de marcador de posición (placeholder) */
+::placeholder {
+    text-align: center; 
+ }
+
+ /* Estilos para el contenedor de la derecha */
+.col-md-6.col-lg-7 {
+    flex: 1;
+    border-radius: 0 1rem 1rem 0; /* Redondear esquinas del lado derecho */
+    padding: 1.25rem; /* Espaciado interno (ajusta según necesites) */
+  } 
+
+/* Estilos para el texto dentro del contenedor */
+
+/* Estilos adicionales para el botón oscuro */
+.btn-dark{
+    margin-top: 70px;
+}
