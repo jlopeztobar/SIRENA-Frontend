@@ -1,0 +1,17 @@
+<div class = "bg-gray-300 w-full h-screen">
+    <app-nav-side-bar></app-nav-side-bar>
+    <div class="p-4 sm:ml-64">
+      <div
+        class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14"
+      >
+        <h1 class="text-[30px] font-bold ml-3">Gestion de reservas</h1>
+        <div class="flex">
+          <button class ="bg-white shadow-md rounded border-1 w-[87px] h-[35px] font-bold ml-3 mt-5">Listar</button>
+          <button class ="bg-red-400  shadow-md rounded border-1 w-[87px] h-[35px] font-bold ml-3 mt-5">Agregar</button>
+        </div>
+        <div class="max-w-[80%]">
+          <app-table [table] = "table_booking" [route]="route"></app-table>
+        </div>
+      </div>
+    </div>
+  </div>
