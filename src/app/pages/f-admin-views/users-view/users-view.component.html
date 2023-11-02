@@ -7,7 +7,14 @@
       <h1 class="text-[30px] font-bold ml-3">Usuarios registrados</h1>
       <div class="flex">
         <button class ="bg-white shadow-md rounded border-1 w-[87px] h-[35px] font-bold ml-3 mt-5">Listar</button>
-        <button class ="bg-red-400  shadow-md rounded border-1 w-[87px] h-[35px] font-bold ml-3 mt-5">Agregar</button>
+        <a 
+        class="bg-red-400 shadow-md rounded border-1 w-[87px] h-[35px] font-bold ml-3 mt-5 inline-block text-center" 
+        style="line-height: 35px; cursor: pointer;"
+        (click)="navigateToCreateUser()">  <!-- Aquí usas el evento (click) -->
+        Agregar
+      </a>
+    
+    
       </div>
       <div class="max-w-[80%]">
         <app-table [table] = "table_user" [route]="route"></app-table>

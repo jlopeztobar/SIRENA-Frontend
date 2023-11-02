@@ -6,6 +6,7 @@ import { NavSideBarComponent } from './nav-side-bar/nav-side-bar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { TableComponent } from './table/table.component';
 import { SuccesswindowComponent } from './successwindow/successwindow.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ import { SuccesswindowComponent } from './successwindow/successwindow.component'
     SuccesswindowComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports:[
     CardComponent,

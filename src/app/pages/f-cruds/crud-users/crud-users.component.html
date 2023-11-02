@@ -1,103 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-    <section class="vh-100" style="background-color: #DCDCDC;">
-        <div class="container py-5 h-100">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="rounded" style="background-color: #FFFFFF;">
-              
-              <div class="container" style="margin-bottom: 45px; margin-top: 45px;">
-                <div class="row">
-                  <div class="col-md-6 offset-md-3 text-center" style="margin-top: 5px; margin-bottom: 5px;">
-                    <img src="../../../assets/89037.png" class="img-fluid" alt="Imagen" style="width: 100px; height: 100px;">
-                  </div>
+<app-nav-side-bar></app-nav-side-bar> 
+<section class="h-screen bg-gray-200">
+    <div class="container mx-auto py-5 h-full">
+        <div class="flex justify-center items-center h-full">
+            <div class="bg-white rounded p-6">
+                <div class="text-center mb-12">
+                    <img src="../../../assets/89037.png" alt="Imagen" class="mx-auto w-24 h-24">
+                    <div class="border-t border-red-500 mt-4 mb-4"></div>
+                    <span>Crear usuario</span>
                 </div>
-                <div class="row">
-                  <div class="col-md-8 offset-md-2" style="border-top: 1px solid #d40d0d;"></div>
-                </div>
-                <div class="row" style="text-align: center;">
-                  <span>Crear usuario</span>
-                </div>
-              </div>          
-              
-              <form>
-                <div class="container">
-                    <div class="row" style="margin-bottom: 45px;">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="rol">Rol:</label>
-                                <select class="form-control" id="rol">
+
+                <form>
+                    <div class="mb-12">
+                        <div class="flex mb-12">
+                            <div class="w-1/2 pr-2">
+                                <label for="rol" class="block mb-2">Rol:</label>
+                                <select class="form-control w-full border rounded p-2" id="rol">
                                     <option value="coordinador">Coordinador</option>
                                     <option value="centro-posgrados">Centro de Posgrados</option>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+                            <div class="w-1/2 pl-2">
+                                <label for="nombre" class="block mb-2">Nombre:</label>
+                                <input type="text" class="form-control w-full border rounded p-2" id="nombre" placeholder="Ingrese el nombre">
                             </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 45px;">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="apellido">Apellido:</label>
-                                <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido">
+
+                        <div class="flex mb-12">
+                            <div class="w-1/2 pr-2">
+                                <label for="apellido" class="block mb-2">Apellido:</label>
+                                <input type="text" class="form-control w-full border rounded p-2" id="apellido" placeholder="Ingrese el apellido">
+                            </div>
+                            <div class="w-1/2 pl-2">
+                                <label for="nombreUsuario" class="block mb-2">Nombre de Usuario:</label>
+                                <input type="text" class="form-control w-full border rounded p-2" id="nombreUsuario" placeholder="Ingrese el nombre de usuario">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nombreUsuario">Nombre de Usuario:</label>
-                                <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingrese el nombre de usuario">
+
+                        <div class="flex mb-12">
+                            <div class="w-1/2 pr-2">
+                                <label for="contrasena" class="block mb-2">Contraseña:</label>
+                                <input type="text" class="form-control w-full border rounded p-2" id="contrasena" placeholder="Ingrese la contraseña">
+                            </div>
+                            <div class="w-1/2 pl-2">
+                                <label for="email" class="block mb-2">Email:</label>
+                                <input type="email" class="form-control w-full border rounded p-2" id="email" placeholder="Ingrese el email">
                             </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 45px;">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="contrasena">Contraseña:</label>
-                                <input type="text" class="form-control" id="contrasena" placeholder="Ingrese la contraseña">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" placeholder="Ingrese el email">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 45px;">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="programa">Programa al que pertenece:</label>
-                                <select class="form-control" id="programa">
+
+                        <div class="mb-12">
+                            <div class="w-full">
+                                <label for="programa" class="block mb-2">Programa al que pertenece:</label>
+                                <select class="form-control w-full border rounded p-2" id="programa">
                                     <option value="sistemas">Sistemas</option>
                                     <option value="electronica">Electrónica</option>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="flex justify-end">
+                            <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-end" style="margin-bottom: 25px;">
-                        <button type="submit" class="btn btn-dark">Crear</button>
-                    </div>
-                </div>
-            </form>
-            
-            
-              
+                </form>
             </div>
-          </div>
         </div>
-      </section>
-    
-    
-    
-</body>
-</html>
+    </div>
+</section>
