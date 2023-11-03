@@ -15,11 +15,11 @@ export class ClassroomViewComponent {
   route: string = "classroom_view";
 
   // Un ejemplo de como se debe usar las tablas, con el fetch setearlas
-  table_classroom: Table ={
+  /*table_classroom: Table ={
     title: ["Salon", "Capacidad", "Tipo", "Edificio", "Estado"],
     li_content: ["201", "20", "Agua", "Fisica"],
     state: "804000"
-  }
+  }*/
 
   // Inyecta el Router en el constructor
   constructor(private router: Router) { }

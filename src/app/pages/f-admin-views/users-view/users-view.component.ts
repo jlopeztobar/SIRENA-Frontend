@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importa el Router
+// users-view.component.ts
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Table } from 'src/app/models/table.model';
 
 @Component({
@@ -7,24 +9,52 @@ import { Table } from 'src/app/models/table.model';
   templateUrl: './users-view.component.html',
   styleUrls: ['./users-view.component.css']
 })
-export class UsersViewComponent {
+export class UsersViewComponent implements OnInit {
+  route: string = "users_view";
   
-  // Se debe hacer un array de usuarios para iterarlos
-
-  // Aqui va la ruta que de el acceso, este solo es un ejemplo
-  route:string = "users_view";
-
-  // Un ejemplo de como se debe usar las tablas, con el fetch setearlas
+  // Inicializa table_user con un objeto que se ajuste a la interfaz Table
   table_user: Table = {
-    title: ["Nombre","Correo","Codigo", "Programa", "Rol"],
-    li_content: ["Juan Camilo C","JuanCamilo@gmail.com","100932902", "Fisica", "Pasivo"],
-    img:"https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+    title: ["ID", "Username", "Name", "Email", "Status", "Role"],
+    li_content: [],
+    img: "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
   };
 
-  // Inyecta el Router en el constructor
-  constructor(private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  // Método para manejar la navegación
+  ngOnInit() {
+    this.fetchUsers();
+  }
+
+  fetchUsers() {
+    const token = localStorage.getItem('jwt');
+    if (!token) {
+      console.error('No token found!');
+      return;
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    this.http.get<any[]>('/api/v1/user', { headers: headers })
+      .subscribe({
+        next: (users) => {
+          console.log('Users data received:', users); // Muestra el JSON en la consola
+          this.table_user.li_content = users.map(user => [
+            user.usr_id.toString(), // Convierte a string
+            user.usr_name,
+            `${user.usr_firstname} ${user.usr_lastname}`,
+            user.usr_email,
+            user.usr_status ? 'Active' : 'Inactive',
+            user.usr_role
+          ]);
+        },
+        error: (err) => {
+          console.error('Error al obtener los usuarios', err);
+        }
+      });
+  }
+
   navigateToCreateUser() {
     this.router.navigate(['/admin/users/create']);
   }

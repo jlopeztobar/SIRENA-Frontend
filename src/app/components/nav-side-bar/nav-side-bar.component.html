@@ -348,26 +348,27 @@
       </li>
       <li class="flex justify-center mt-8">
         <a
-          href="#"
-          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-        >
-          <div class="flex gap-2 p-2 border items-center rounded-xl w-[119px]">
-            <svg
-              width="21"
-              height="24"
-              viewBox="0 0 21 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-3"
-            >
-              <path
-                d="M8.16115 16.7318L9.78417 18.6057L15.5396 11.9608L9.78417 5.3159L8.16115 7.18976L11.1309 10.6318H0V13.2898H11.1309L8.16115 16.7318ZM18.4173 0H2.30216C1.02446 0 0 1.19608 0 2.65795V7.97386H2.30216V2.65795H18.4173V21.2636H2.30216V15.9477H0V21.2636C0 22.7255 1.02446 23.9216 2.30216 23.9216H18.4173C19.6835 23.9216 20.7194 22.7255 20.7194 21.2636V2.65795C20.7194 1.19608 19.6835 0 18.4173 0Z"
-                fill="#B91D0E"
-              />
-            </svg>
-            <span class="font-bold text-xl">Salir</span>
-          </div>
-        </a>
+        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        (click)="logout()"
+      >
+        <div class="flex gap-2 p-2 border items-center rounded-xl w-[119px]">
+          <svg
+            width="21"
+            height="24"
+            viewBox="0 0 21 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="ml-3"
+          >
+            <path
+              d="M8.16115 16.7318L9.78417 18.6057L15.5396 11.9608L9.78417 5.3159L8.16115 7.18976L11.1309 10.6318H0V13.2898H11.1309L8.16115 16.7318ZM18.4173 0H2.30216C1.02446 0 0 1.19608 0 2.65795V7.97386H2.30216V2.65795H18.4173V21.2636H2.30216V15.9477H0V21.2636C0 22.7255 1.02446 23.9216 2.30216 23.9216H18.4173C19.6835 23.9216 20.7194 22.7255 20.7194 21.2636V2.65795C20.7194 1.19608 19.6835 0 18.4173 0Z"
+              fill="#B91C1C"
+            />
+          </svg>
+          <span class="font-bold text-xl">Salir</span>
+        </div>
+      </a>
+      
       </li>
     </ul>
   </div>

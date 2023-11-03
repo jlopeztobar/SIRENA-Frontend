@@ -15,10 +15,10 @@ export class BookingViewComponent {
   route: string = "booking_view";
 
   // Un ejemplo de como se debe usar las tablas, con el fetch setearlas
-  table_booking: Table = {
+  /*table_booking: Table = {
     title: ["Estado","Salon","Edificio", "Fecha de solicitud", "Fecha de reserva", "Coordinador", "Programa"],
     li_content: ["Pendiente","201","Fisica", "10/10/2023", "11/11/2023", "Juanito", "Fisica"]
-  };  
+  };*/  
 
   // Inyecta el Router en el constructor
   constructor(private router: Router) { }

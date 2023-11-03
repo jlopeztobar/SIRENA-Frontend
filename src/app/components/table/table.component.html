@@ -1,28 +1,35 @@
 <div class=" p-2 w-[100%]" [ngSwitch]=route>
     <div *ngSwitchCase="'users_view'">
-        <div class="bg-black text-white p-2 rounded-t-lg flex gap-2 ">
-            <div *ngFor="let title of table.title; let last = last; " class="flex-1">
-                <h5 class="mb-2 text-sm font-bold tracking-tight text-white" [class.text-center]=!last> {{title}} </h5>
+        <!-- Titles -->
+        <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+            <div class="w-6 mr-2"></div> <!-- Espacio para el círculo -->
+            <div class="w-6 mr-2"></div> <!-- Espacio para la imagen -->
+            <div *ngFor="let title of table.title" class="flex-1 text-center">
+                <h5 class="mb-2 text-sm font-bold tracking-tight text-white"> {{title}} </h5>
             </div>
         </div>
-        <div
-            class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg">
+    
+        <!-- Rows -->
+        <div class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg">
             <ul>
-                <!--AQUI DEBES DE ITERAR LA LISTA DE USUARIOS-->
-                <li class=" flex items-center hover:bg-slate-100 ">
-                    <span class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full mr-2"></span>
-                    <img [src]="table.img" alt="user_icon" class="w-6 h-6 rounded-full">
-                    <div *ngFor="let table_li of table.li_content let i = index let last = last;" class="flex-1">
-                        <div class="flex flex-col" [class.ml-3]=!last>
-                            <span class="text-[12px]">
-                                {{table_li}}
-                            </span>
-                        </div>
+                <li *ngFor="let row of table.li_content" class="flex items-center hover:bg-slate-100">
+                    <div class="w-6 mr-2 flex items-center justify-center">
+                        <span class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full"></span>
                     </div>
+                    <div class="w-6 mr-2 flex items-center justify-center">
+                        <img [src]="table.img" alt="user_icon" class="w-6 h-6 rounded-full">
+                    </div>
+                    <ng-container *ngFor="let cell of row">
+                        <div class="flex-1 flex items-center justify-center">
+                            <span class="text-[12px]"> {{cell}} </span>
+                        </div>
+                    </ng-container>
                 </li>
             </ul>
         </div>
     </div>
+    
+    
     <div *ngSwitchCase="'classroom_view'">
         <div class="bg-black text-white p-2 rounded-t-lg flex gap-2 ">
             <div *ngFor="let title of table.title; let last = last; " class="flex-1">

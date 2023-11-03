@@ -9,14 +9,15 @@
                     <span>Crear usuario</span>
                 </div>
 
-                <form>
+                <form (submit)="registerUser($event)">
                     <div class="mb-12">
                         <div class="flex mb-12">
                             <div class="w-1/2 pr-2">
                                 <label for="rol" class="block mb-2">Rol:</label>
                                 <select class="form-control w-full border rounded p-2" id="rol">
-                                    <option value="coordinador">Coordinador</option>
-                                    <option value="centro-posgrados">Centro de Posgrados</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="COORDINADOR">COORDINADOR</option>
+                                    <option value="DOCENTE">DOCENTE</option>
                                 </select>
                             </div>
                             <div class="w-1/2 pl-2">
@@ -39,21 +40,11 @@
                         <div class="flex mb-12">
                             <div class="w-1/2 pr-2">
                                 <label for="contrasena" class="block mb-2">Contraseña:</label>
-                                <input type="text" class="form-control w-full border rounded p-2" id="contrasena" placeholder="Ingrese la contraseña">
+                                <input type="password" class="form-control w-full border rounded p-2" id="contrasena" placeholder="Ingrese la contraseña">
                             </div>
                             <div class="w-1/2 pl-2">
                                 <label for="email" class="block mb-2">Email:</label>
                                 <input type="email" class="form-control w-full border rounded p-2" id="email" placeholder="Ingrese el email">
-                            </div>
-                        </div>
-
-                        <div class="mb-12">
-                            <div class="w-full">
-                                <label for="programa" class="block mb-2">Programa al que pertenece:</label>
-                                <select class="form-control w-full border rounded p-2" id="programa">
-                                    <option value="sistemas">Sistemas</option>
-                                    <option value="electronica">Electrónica</option>
-                                </select>
                             </div>
                         </div>
 
