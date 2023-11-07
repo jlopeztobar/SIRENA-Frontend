@@ -10,46 +10,43 @@
                     <span>Crear salón</span>
                 </div>
 
-                <form>
+                <form (submit)="registerClassroom($event)">
                     <div class="mb-12">
-                        <div class="flex mb-12">
-                            <div class="w-1/2 pr-2">
-                                <label for="capacidad" class="block mb-2">Capacidad:</label>
-                                <input type="text" class="form-control w-full border rounded p-2" id="capacidad" placeholder="Ingrese la capacidad">
-                            </div>
-                            <div class="w-1/2 pl-2">
-                                <label for="tipoSalon" class="block mb-2">Tipo de Salón:</label>
-                                <select class="form-control w-full border rounded p-2" id="tipoSalon">
-                                    <option value="Auditorio">Auditorio</option>
-                                    <option value="Salon">Salón</option>
-                                </select>
-                            </div>
+                        <!-- Nombre del Salón -->
+                        <div class="mb-6">
+                            <label for="nombreSalon" class="block mb-2">Nombre del Salón:</label>
+                            <input type="text" class="form-control w-full border rounded p-2" id="nombreSalon" placeholder="Ingrese el nombre del salón" required>
                         </div>
-
-                        <div class="flex mb-12">
-                            <div class="w-1/2 pr-2">
-                                <label for="nombreSalon" class="block mb-2">Nombre del Salón:</label>
-                                <input type="text" class="form-control w-full border rounded p-2" id="nombreSalon" placeholder="Ingrese el nombre del salón">
-                            </div>
-                            <div class="w-1/2 pl-2">
-                                <label for="estadoSalon" class="block mb-2">Estado del Salón:</label>
-                                <select class="form-control w-full border rounded p-2" id="estadoSalon">
-                                    <option value="Habilitado">Habilitado</option>
-                                    <option value="Inhabilitado">Inhabilitado</option>
-                                </select>
-                            </div>
+                
+                        <!-- Capacidad -->
+                        <div class="mb-6">
+                            <label for="capacidad" class="block mb-2">Capacidad:</label>
+                            <input type="number" class="form-control w-full border rounded p-2" id="capacidad" placeholder="Ingrese la capacidad" required>
                         </div>
-
-                        <div class="mb-12">
-                            <div class="w-full">
-                                <label for="facultad" class="block mb-2">Facultad:</label>
-                                <select class="form-control w-full border rounded p-2" id="facultad">
-                                    <option value="FIET">FIET</option>
-                                    <option value="FIC">FIC</option>
-                                </select>
-                            </div>
+                
+                        <!-- Estado del Salón -->
+                        <div class="mb-6">
+                            <label for="estadoSalon" class="block mb-2">Estado del Salón:</label>
+                            <input type="text" class="form-control w-full border rounded p-2" id="estadoSalon" placeholder="Ingrese el estado del salón" required>
                         </div>
-
+                
+                        <!-- Edificio / Facultad -->
+                        <div class="mb-6">
+                            <label for="edificio" class="block mb-2">Edificio/Facultad:</label>
+                            <input type="text" class="form-control w-full border rounded p-2" id="edificio" placeholder="Ingrese el edificio o facultad" required>
+                        </div>
+                
+                        <!-- Tipo de Salón -->
+                        <div class="mb-6">
+                            <label for="tipoSalon" class="block mb-2">Tipo de Salón:</label>
+                            <select class="form-control w-full border rounded p-2" id="tipoSalon">
+                                <option *ngFor='let type of classroomTypes' [value]="type.cls_type_name" [attr.data-id]="type.cls_type_id">
+                                    {{ type.cls_type_name }}
+                                </option>
+                            </select>
+                        </div>
+                
+                        <!-- Botón de envío -->
                         <div class="flex justify-end">
                             <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
                         </div>
