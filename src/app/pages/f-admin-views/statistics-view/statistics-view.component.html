@@ -1,0 +1,8 @@
+<div class="w-full h-screen">
+  <app-nav-side-bar [vRol]="role_nav"></app-nav-side-bar>
+  <app-dropdown></app-dropdown>
+  <div *ngIf="vBool">
+    <app-statistics [vData]="data_graph" [vCategories]="categories" [vText]="option_statistic" [vType]="'bar'"></app-statistics>
+    <app-statistics [vData]="data_graph" [vCategories]="categories" [vText]="option_statistic" [vType]="'area'"></app-statistics>
+  </div>
+</div>

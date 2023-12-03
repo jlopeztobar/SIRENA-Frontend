@@ -12,12 +12,16 @@ export class CRUDClassroomComponent implements OnInit {
   
   constructor(private http: HttpClient, private router: Router) {}
 
+  role_nav: string = 'postgraduates';
+
   private headers!: HttpHeaders; // Variable para los headers
   public classroomTypes: any[] = [];
+  public buildingTypes: any[]=[];
 
   ngOnInit(): void {
     this.initializeHeaders();
     this.loadClassroomTypes();
+    this.loadBuildingTypes();
   }
 
   private initializeHeaders(): void {
@@ -32,15 +36,24 @@ export class CRUDClassroomComponent implements OnInit {
     });
   }
 
+  private async loadBuildingTypes(){
+    try{
+      const response2 = await this.http.get('api/v1/building', { headers: this.headers }).toPromise();
+      this.buildingTypes = response2 as any[];
+      console.log(JSON.stringify(response2) + "Tipos de edificio");
+    }catch(error){
+      console.error("Hubo un error al cargas los tipos de edificios",error)
+    }
+  }
   private async loadClassroomTypes() {
     try {
-      const response2 = await this.http.get('api/v1/classroomType', { headers: this.headers }).toPromise();
-      this.classroomTypes = response2 as any[];
-      console.log(this.classroomTypes + "log");
+      const response3 = await this.http.get('api/v1/classroomType', { headers: this.headers }).toPromise();
+      this.classroomTypes = response3 as any[];
+      console.log(JSON.stringify(response3) + "Tipos de salon");
     } catch (error) {
       console.error('Hubo un error al cargar los tipos de salón', error);
-      // Maneja el error adecuadamente aquí
     }
+
   }
 
   async registerClassroom(event: Event) {
@@ -50,19 +63,28 @@ export class CRUDClassroomComponent implements OnInit {
     const name = (form.querySelector('#nombreSalon') as HTMLInputElement).value;
     const capacity = Number((form.querySelector('#capacidad') as HTMLInputElement).value);
     const state = (form.querySelector('#estadoSalon') as HTMLInputElement).value;
+
     const classroomTypeSelect = form.querySelector('#tipoSalon') as HTMLSelectElement;
     const classroomTypeId = classroomTypeSelect.selectedOptions[0].getAttribute('data-id');
     const classroomTypeName = classroomTypeSelect.value;
+
+    const buildingTypeSelect = form.querySelector('#tipoBuilding') as HTMLSelectElement;
+    const buildingTypeId = buildingTypeSelect.selectedOptions[0].getAttribute('data-id');
+    const buildingTypeName = buildingTypeSelect.value;
+
     // Asegúrate de que la propiedad "building" exista en tu formulario si es necesaria para tu objeto JSON.
-    const building = (form.querySelector('#edificio') as HTMLInputElement)?.value || '';
-    const response2 = await this.http.get('api/v1/classroomType', { headers: this.headers }).toPromise();
+
 
    
     const classroomData = {
       name,
       capacity,
       state,
-      building,
+      building:	{
+        id: buildingTypeId ? parseInt(buildingTypeId, 10) : null,
+        name: buildingTypeName,
+        facultades: []
+    },
       classroomType: {
         id: classroomTypeId ? parseInt(classroomTypeId, 10) : null,
         name: classroomTypeName

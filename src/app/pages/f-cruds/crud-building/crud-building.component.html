@@ -1,0 +1,27 @@
+<!-- crud-building.component.html -->
+<app-nav-side-bar [vRol]="role_nav"></app-nav-side-bar>
+<section class="h-screen bg-gray-200">
+    <div class="container mx-auto py-5 h-full">
+      <div class="flex justify-center items-center h-full">
+        <div class="bg-white rounded p-6">
+          <div class="text-center mb-12">
+            <img src="../../../assets/building.svg" alt="Imagen" class="mx-auto w-16 h-16 mb-4">
+            <div class="border-t border-red-500 mt-4 mb-4"></div>
+            <span>Crear Edificio</span>
+          </div>
+  
+          <form (submit)="registerBuilding($event)">
+            <div class="mb-12">
+              <label for="name" class="block mb-2">Nombre del Edificio:</label>
+              <input type="text" class="form-control w-full border rounded p-2" id="name" placeholder="Ingrese el nombre del edificio">
+            
+              <div class="flex justify-end mt-6">
+                <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  

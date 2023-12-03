@@ -11,6 +11,8 @@ export class CRUDUsersComponent {
   // Injecta HttpClient y Router en tu componente
   constructor(private http: HttpClient, private router: Router) {}
 
+  role_nav: string = 'postgraduates';
+
   // Método para manejar el envío del formulario
   async registerUser(event: any) {
     event.preventDefault();

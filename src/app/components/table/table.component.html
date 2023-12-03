@@ -1,105 +1,182 @@
-<div class=" p-2 w-[100%]" [ngSwitch]=route>
-    <div *ngSwitchCase="'users_view'">
-        <!-- Titles -->
-        <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
-            <div class="w-6 mr-2"></div> <!-- Espacio para el círculo -->
-            <div class="w-6 mr-2"></div> <!-- Espacio para la imagen -->
-            <div *ngFor="let title of table.title" class="flex-1 text-center">
-                <h5 class="mb-2 text-sm font-bold tracking-tight text-white"> {{title}} </h5>
-            </div>
-        </div>
-    
-        <!-- Rows -->
-        <div class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg">
-            <ul>
-                <li *ngFor="let row of table.li_content" class="flex items-center hover:bg-slate-100">
-                    <div class="w-6 mr-2 flex items-center justify-center">
-                        <span class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full"></span>
-                    </div>
-                    <div class="w-6 mr-2 flex items-center justify-center">
-                        <img [src]="table.img" alt="user_icon" class="w-6 h-6 rounded-full">
-                    </div>
-                    <ng-container *ngFor="let cell of row">
-                        <div class="flex-1 flex items-center justify-center">
-                            <span class="text-[12px]"> {{cell}} </span>
-                        </div>
-                    </ng-container>
-                </li>
-            </ul>
-        </div>
+<div class="p-2 w-[100%]" [ngSwitch]="route">
+  <div *ngSwitchCase="'users_view'">
+    <!-- Titles -->
+    <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+      <div class="w-6 mr-2"></div>
+      <!-- Espacio para el círculo -->
+      <div class="w-6 mr-2"></div>
+      <!-- Espacio para la imagen -->
+      <div *ngFor="let title of table.title" class="flex-1 text-center">
+        <h5 class="mb-2 text-sm font-bold tracking-tight text-white">
+          {{ title }}
+        </h5>
+      </div>
     </div>
-    
-    
-    <div *ngSwitchCase="'classroom_view'">
-        <!-- Titles -->
-        <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
-            <div class="w-6 mr-2"></div> <!-- Espacio para el círculo -->
-            <div class="w-6 mr-2"></div> <!-- Espacio para la imagen -->
-            <div *ngFor="let title of table.title" class="flex-1 text-center">
-                <h5 class="mb-2 text-sm font-bold tracking-tight text-white"> {{title}} </h5>
+
+    <!-- Rows -->
+    <div
+      class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg"
+    >
+      <ul>
+        <li
+          *ngFor="let row of table.li_content"
+          class="flex items-center hover:bg-slate-100"
+        >
+          <div class="w-6 mr-2 flex items-center justify-center">
+            <span
+              class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full"
+            ></span>
+          </div>
+          <div class="w-6 mr-2 flex items-center justify-center">
+            <img
+              [src]="table.img"
+              alt="user_icon"
+              class="w-6 h-6 rounded-full"
+            />
+          </div>
+          <ng-container *ngFor="let cell of row">
+            <div class="flex-1 flex items-center justify-center">
+              <span class="text-[12px]"> {{ cell }} </span>
             </div>
-        </div>
-    
-        <!-- Rows -->
-        <div class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg">
-            <ul>
-                <li *ngFor="let row of table.li_content" class="flex items-center hover:bg-slate-100">
-                    <div class="w-6 mr-2 flex items-center justify-center">
-                        <!-- Puedes quitar este bloque si no hay un ícono o indicador que acompañe cada fila -->
-                        <span class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full"></span>
-                    </div>
-                    <div class="w-6 mr-2 flex items-center justify-center">
-                        <!-- Esta imagen puede ser un ícono estático o relacionado con el tipo de aula, asegúrate de cambiar el enlace si es necesario -->
-                        <img [src]="table.img" alt="classroom_icon" class="w-6 h-6 rounded-full">
-                    </div>
-                    <ng-container *ngFor="let cell of row">
-                        <div class="flex-1 flex items-center justify-center">
-                            <span class="text-[12px]"> {{cell}} </span>
-                        </div>
-                    </ng-container>
-                </li>
-            </ul>
-        </div>
+          </ng-container>
+        </li>
+      </ul>
     </div>
-    
-      
-    
-    
-    <div *ngSwitchCase="'booking_view'">
-        <div>
-            <div class="bg-black text-white p-2 rounded-t-lg flex gap-2 ">
-                <div *ngFor="let title of table.title; let last = last; " class="flex-1">
-                    <h5 class="mb-2 text-sm font-bold tracking-tight text-white " [class.text-center]=!last> {{title}} </h5>
-                </div>
-            </div>
-            <div
-                class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-2 rounded-b-lg">
-                <ul>
-                    <!--AQUI DEBES DE ITERAR LA LISTA DE RESERVAS-->
-                    <li class="hover:bg-slate-100">
-                        <div class="flex">
-                            <span class="w-4 h-4 bg-white border border-[#CFCFCF] rounded-full mr-2"></span>
-                            <div *ngFor="let table_li of table.li_content let i = index let last = last;"
-                                class="flex-1">
-                                <div class="flex ml-3">
-                                    <span class="text-[12px]">
-                                        {{table_li}}
-                                    </span>
-                                </div>
-                            </div>
-                            <div>
-                            </div>
-                        </div>
-                        <button class="bg-white shadow-md rounded border-1 w-[80px] h-[30px] font-bold ml-8 mt-1 mb-1">
-                            aceptar
-                        </button>
-                        <button
-                            class="bg-white shadow-md rounded border-1 w-[80px] h-[30px] font-bold ml-4 mt-1 mb-1 text-red-600">
-                            denegar
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  </div>
+
+  <div *ngSwitchCase="'classroom_view'">
+    <!-- Titles -->
+    <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+      <div *ngFor="let title of table.title" class="flex-1 text-center">
+        <h5 class="mb-2 text-sm font-bold tracking-tight text-white">
+          {{ title }}
+        </h5>
+      </div>
     </div>
+
+    <!-- Rows -->
+    <div class="bg-white border-gray-200 gap-2 p-2 rounded-b-lg">
+      <ul>
+        <li
+          *ngFor="let row of table.li_content"
+          class="flex items-center hover:bg-slate-100"
+        >
+          <ng-container *ngFor="let cell of row">
+            <div class="flex-1 flex justify-center">
+              <span class="text-[12px]"> {{ cell }} </span>
+            </div>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!-- Vista de Reservas (Booking View) -->
+<div *ngSwitchCase="'booking_view'">
+  <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+    <div *ngFor="let title of table.title" class="flex-1 text-center">
+      <h5 class="mb-2 text-sm font-bold tracking-tight text-white">
+        {{ title }}
+      </h5>
+    </div>
+  </div>
+  <div class="bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-2 rounded-b-lg">
+    <ul>
+      <!-- Filas de la tabla -->
+      <li *ngFor="let row of table.li_content; let i = index" class="flex items-center hover:bg-slate-100">
+        <!-- Contenido de la fila de la tabla -->
+        <ng-container *ngFor="let cell of row">
+          <div class="flex-1 flex justify-center">
+            <span class="text-[12px]">{{ cell }}</span>
+          </div>
+        </ng-container>
+
+        <!-- Botones de Aceptar y Rechazar (sin *ngIf para prueba) -->
+        <div class="top-0 left-0" *ngIf="userRole === 'coordinator'">
+          <button class="bg-white shadow-md rounded border-1 w-[40px] h-[20px] font-bold ml-8 mt-1 mb-1 text-sm"
+                  (click)="onReservationAction(row[0], 'accept')">✔</button>
+          <button class="bg-white shadow-md rounded border-1 w-[40px] h-[20px] font-bold ml-4 mt-1 mb-1 text-red-600 text-sm"
+                  (click)="onReservationAction(row[0], 'reject')">X</button>
+        </div>
+        
+        <!-- Botón para abrir/cerrar el modal -->
+        <div class="flex-1 flex justify-center">
+          <button *ngIf="row[1].trim() === 'Aceptada' && !incidenciaEnviada[i] && userRole !== 'postgraduates'"
+                  (click)="toggleModal(i)" class="bg-white shadow-md rounded border-1 w-[40px] h-[20px] font-bold mt-1 mb-1">
+            {{ modalAbierto[i] ? 'Cerrar' : 'Inc' }}
+          </button>
+        </div>
+
+        <!-- Modal -->
+        <app-modal *ngIf="modalAbierto[i] ">
+          <select [(ngModel)]="opcionSeleccionada[i]" class="bg-white shadow-md rounded border-1 w-[80px] h-[30px] font-bold mt-1 mb-1">
+            <option *ngFor='let type of tipoIncidencia' [value]="type.ins_type_name" [attr.data-id]="type.ins_type_id">
+              {{ type.ins_type_name }}
+            </option>
+          </select>
+          <input type="text" [(ngModel)]="textoIngresado[i]" class="bg-white shadow-md rounded border-1 w-[80px] h-[30px] font-bold mt-1 mb-1" placeholder="Escribe aquí">
+          <button (click)="enviarDatos(i)" class="bg-white shadow-md rounded border-1 w-[80px] h-[30px] font-bold mt-1 mb-1">
+            Enviar
+          </button>
+        </app-modal>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+  <div *ngSwitchCase="'building_view'">
+    <!-- Titles -->
+    <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+      <div *ngFor="let title of table.title" class="flex-1 text-center">
+        <h5 class="mb-2 text-sm font-bold tracking-tight text-white">
+          {{ title }}
+        </h5>
+      </div>
+    </div>
+
+    <!-- Rows -->
+    <div class="bg-white border-gray-200 gap-2 p-2 rounded-b-lg">
+      <ul>
+        <li
+          *ngFor="let row of table.li_content"
+          class="flex items-center hover:bg-slate-100"
+        >
+          <ng-container *ngFor="let cell of row">
+            <div class="flex-1 flex justify-center">
+              <span class="text-[12px]"> {{ cell }} </span>
+            </div>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'faculty_view'">
+    <!-- Titles -->
+    <div class="bg-black text-white p-2 rounded-t-lg flex gap-2">
+      <div *ngFor="let title of table.title" class="flex-1 text-center">
+        <h5 class="mb-2 text-sm font-bold tracking-tight text-white">
+          {{ title }}
+        </h5>
+      </div>
+    </div>
+
+    <!-- Rows -->
+    <div class="bg-white border-gray-200 gap-2 p-2 rounded-b-lg">
+      <ul>
+        <li
+          *ngFor="let row of table.li_content"
+          class="flex items-center hover:bg-slate-100"
+        >
+          <ng-container *ngFor="let cell of row">
+            <div class="flex-1 flex justify-center">
+              <span class="text-[12px]"> {{ cell }} </span>
+            </div>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

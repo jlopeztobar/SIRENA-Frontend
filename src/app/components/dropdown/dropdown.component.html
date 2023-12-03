@@ -1,0 +1,33 @@
+<div class="p-4 sm:ml-64">
+  <div
+    class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14 w-[15%]"
+  >
+    <div
+      (click)="showDropDown()"
+      class="border-solid border-gray-400 border-[1px] px-5 py-2 rounded cursor-pointer font-bold flex justify-between select-none"
+    >
+      Options
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        class="bi bi-caret-down-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+        />
+      </svg>
+    </div>
+    <div
+      *ngIf="vShow"
+      class="shadow-md mt-1 border-solid border-2 rounded border-gray-600 bg-white w-[200px]"
+    >
+      <div (click)="(selectItem($event) )" class="cursor-pointer hover:bg-gray-300 p-4">building</div>
+      <div (click)="(selectItem ($event))" class="cursor-pointer hover:bg-gray-300 p-4">faculty</div>
+      <div (click)="(selectItem ($event))" class="cursor-pointer hover:bg-gray-300 p-4">programs</div>
+      <div (click)="(selectItem ($event))" class="cursor-pointer hover:bg-gray-300 p-4">classroom</div>
+    </div>
+  </div>
+</div>

@@ -42,15 +42,25 @@ export class LoginComponent {
           localStorage.setItem("jwt",token);
           
           try {
+
             const decodedToken: any = jwtDecode(token);
             const role = decodedToken.role;
+            const userId = decodedToken.subId;
+            const userName = decodedToken.sub;
             
             localStorage.setItem("role", role);
+            localStorage.setItem("id", userId);
+            localStorage.setItem("name", userName);
+
+            console.log(decodedToken);
+            
             // Redirección basada en el rol
-            if (['ROLE_ADMIN', 'ROLE_COORDINADOR'].includes(role)) {
+            if (role === 'ROLE_ADMIN') {
               this.router.navigateByUrl('/admin/home');
+            } else if (role === 'ROLE_COORDINADOR') {
+              this.router.navigateByUrl('/coord/home');
             } else if (role === 'ROLE_DOCENTE') {
-              this.router.navigateByUrl('/user/home');
+              this.router.navigateByUrl('/user/booking');
             } else {
               console.error('Rol no autorizado');
               alert('Acceso no permitido para tu rol');

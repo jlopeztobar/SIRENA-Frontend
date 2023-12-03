@@ -1,0 +1,43 @@
+<app-nav-side-bar [vRol]="role_nav"></app-nav-side-bar>
+
+<section class="h-screen bg-gray-200">
+    <div class="container mx-auto py-5 h-full">
+        <div class="flex justify-center items-center h-full">
+            <div class="bg-white rounded p-6">
+                <div class="text-center mb-12">
+                    <img src="../../../assets/faculty.svg" alt="Imagen" class="mx-auto w-16 h-16 mb-4">
+                    <div class="border-t border-red-500 mt-4 mb-4 w-2/3 mx-auto"></div>
+                    <span>Crear Facultad</span>
+                </div>
+
+
+                <form (submit)="registerFaculties($event)">
+                    <div class="mb-12">
+
+                        <div class="mb-6">
+                            <label for="nombreFacultad" class="block mb-2">Nombre de la facultad:</label>
+                            <input type="text" class="form-control w-full border rounded p-2" id="nombreFacultad" placeholder="Ingrese el nombre del salón" required>
+                        </div>
+
+
+                        <div class="mb-6">
+                            <label for="tipoEdificio" class="block mb-2">Edificio:</label>
+                            <select class="form-control w-full border rounded p-2" id="tipoEdificio" required>
+                                <option *ngFor='let type of BuildingType' [value]="type.name" [attr.data-id]="type.id">
+                                    {{ type.name }}
+                            </option>
+                            </select>
+                        </div>
+                
+
+                        <div class="flex justify-end">
+                            <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
+                        </div>
+                    </div>
+                </form> 
+
+            
+            </div>
+        </div>
+    </div>
+</section>

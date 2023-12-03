@@ -1,55 +1,55 @@
-<app-nav-side-bar></app-nav-side-bar>
+<app-nav-side-bar [vRol]="role_nav"></app-nav-side-bar>
 
 <section class="h-screen bg-gray-200">
     <div class="container mx-auto py-5 h-full">
         <div class="flex justify-center items-center h-full">
-            <div class="bg-white rounded p-6">
+            <div class="bg-white rounded p-6 w-full max-w-4xl">
                 <div class="text-center mb-12">
-                    <img src="../../../assets/89037.png" alt="Imagen" class="mx-auto w-24 h-24 mb-4">
+                    <img src="../../../assets/box.svg" alt="Imagen" class="mx-auto w-16 h-16 mb-4">
                     <div class="border-t border-red-500 mt-4 mb-4 w-2/3 mx-auto"></div>
                     <span>Crear salón</span>
                 </div>
 
-                <form (submit)="registerClassroom($event)">
-                    <div class="mb-12">
-                        <!-- Nombre del Salón -->
-                        <div class="mb-6">
-                            <label for="nombreSalon" class="block mb-2">Nombre del Salón:</label>
-                            <input type="text" class="form-control w-full border rounded p-2" id="nombreSalon" placeholder="Ingrese el nombre del salón" required>
-                        </div>
-                
-                        <!-- Capacidad -->
-                        <div class="mb-6">
-                            <label for="capacidad" class="block mb-2">Capacidad:</label>
-                            <input type="number" class="form-control w-full border rounded p-2" id="capacidad" placeholder="Ingrese la capacidad" required>
-                        </div>
-                
-                        <!-- Estado del Salón -->
-                        <div class="mb-6">
-                            <label for="estadoSalon" class="block mb-2">Estado del Salón:</label>
-                            <input type="text" class="form-control w-full border rounded p-2" id="estadoSalon" placeholder="Ingrese el estado del salón" required>
-                        </div>
-                
-                        <!-- Edificio / Facultad -->
-                        <div class="mb-6">
-                            <label for="edificio" class="block mb-2">Edificio/Facultad:</label>
-                            <input type="text" class="form-control w-full border rounded p-2" id="edificio" placeholder="Ingrese el edificio o facultad" required>
-                        </div>
-                
-                        <!-- Tipo de Salón -->
-                        <div class="mb-6">
-                            <label for="tipoSalon" class="block mb-2">Tipo de Salón:</label>
-                            <select class="form-control w-full border rounded p-2" id="tipoSalon">
-                                <option *ngFor='let type of classroomTypes' [value]="type.cls_type_name" [attr.data-id]="type.cls_type_id">
-                                    {{ type.cls_type_name }}
-                                </option>
-                            </select>
-                        </div>
-                
-                        <!-- Botón de envío -->
-                        <div class="flex justify-end">
-                            <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
-                        </div>
+                <form (submit)="registerClassroom($event)" class="flex flex-wrap -mx-2">
+
+                    <div class="px-2 w-full md:w-1/2 mb-4">
+                        <label for="nombreSalon" class="block text-gray-700 mb-2">Nombre del Salón:</label>
+                        <input type="text" class="form-control w-full border rounded p-2" id="nombreSalon" placeholder="Ingrese el nombre del salón" required>
+                    </div>
+
+                    <div class="px-2 w-full md:w-1/2 mb-4">
+                        <label for="capacidad" class="block text-gray-700 mb-2">Capacidad:</label>
+                        <input type="number" class="form-control w-full border rounded p-2" id="capacidad" placeholder="Ingrese la capacidad" min="1" max="500" required>
+                    </div>
+
+                    <div class="px-2 w-full md:w-1/2 mb-4">
+                        <label for="estadoSalon" class="block text-gray-700 mb-2">Estado del Salón:</label>
+                        <select class="form-control w-full border rounded p-2" id="estadoSalon" required>
+                            <option value="habilitado">Habilitado</option>
+                            <option value="inhabilitado">Inhabilitado</option>
+                        </select>
+                    </div>
+
+                    <div class="px-2 w-full md:w-1/2 mb-4">
+                        <label for="tipoBuilding" class="block text-gray-700 mb-2">Edificio:</label>
+                        <select class="form-control w-full border rounded p-2" id="tipoBuilding">
+                            <option *ngFor='let type of buildingTypes' [value]="type.name" [attr.data-id]="type.id">
+                                {{ type.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="px-2 w-full md:w-1/2 mb-4">
+                        <label for="tipoSalon" class="block text-gray-700 mb-2">Tipo de Salón:</label>
+                        <select class="form-control w-full border rounded p-2" id="tipoSalon">
+                            <option *ngFor='let type of classroomTypes' [value]="type.cls_type_name" [attr.data-id]="type.cls_type_id">
+                                {{ type.cls_type_name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="w-full px-2 flex justify-end mt-6">
+                        <button type="submit" class="btn bg-black text-white px-4 py-2 rounded">Crear</button>
                     </div>
                 </form>
             </div>

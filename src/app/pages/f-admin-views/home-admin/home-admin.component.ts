@@ -12,6 +12,8 @@ register();
 })
 export class HomeAdminComponent {
 
+  role_nav: string = 'postgraduates';
+
   //Seguramente debes hacer un array con todos las reservas para iterarlas
 
   //Un ejemplo de como se debe usar los modelos de las cards, con el fetch setearlas

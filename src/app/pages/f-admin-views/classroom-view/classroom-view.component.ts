@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; // Importa HttpClient y HttpHeaders
 import { Router } from '@angular/router';
 import { Table } from 'src/app/models/table.model';
+import { Classroom } from 'src/app/models/classroom.model';
 
 @Component({
   selector: 'app-classroom-view',
@@ -10,10 +11,13 @@ import { Table } from 'src/app/models/table.model';
 })
 export class ClassroomViewComponent implements OnInit {
 
+  role_nav: string = 'postgraduates';
+  route: string = "classroom_view";
+  classrooms: Classroom[] = [];
+
   table_classroom: Table = {
-    title: ["ID", "Name", "Capacity", "State", "Building", "Type"],
-    li_content: [],
-    img: "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+    title: ["ID", "Nombre", "Capacidad", "Estado", "Edificio", "Tipo"],
+    li_content: []
   };
 
   // Inyecta HttpClient en el constructor
@@ -34,17 +38,18 @@ export class ClassroomViewComponent implements OnInit {
       'Authorization': `Bearer ${token}`
     });
 
-    this.http.get<any[]>('/api/v1/classroom', { headers: headers })
+    this.http.get<Classroom[]>('/api/v1/classroom', { headers: headers })
       .subscribe({
-        next: (classrooms) => {
-          console.log('Classrooms data received:', classrooms);
+        next: (data) => {
+          console.log('Classrooms data received:', data);
           // Asigna los datos de las aulas a la propiedad `li_content` del modelo
-          this.table_classroom.li_content = classrooms.map(classroom => [
+          this.classrooms = data;
+          this.table_classroom.li_content = this.classrooms.map(classroom => [
             classroom.id.toString(),
             classroom.name,
             classroom.capacity.toString(),
             classroom.state,
-            classroom.building,
+            classroom.building.name,
             classroom.classroomType.name
           ]);
         },

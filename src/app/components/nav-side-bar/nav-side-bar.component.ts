@@ -1,6 +1,6 @@
 
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-side-bar.component.css']
 })
 export class NavSideBarComponent {
+  @Input() vTitle!: string;
+  @Input() vRol!: string;
+  
   constructor(private router: Router) {}
   logout(): void {
     localStorage.clear(); // Limpia el localStorage completamente
